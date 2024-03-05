@@ -1,0 +1,49 @@
+.footer__contacts-title, 
+.footer__locations-title{
+  color: white;
+  font-size: 35px;
+  margin-left: 40px;
+  text-align: start;
+  width: 70%;
+}
+
+.footer__contacts-mail, 
+.footer__contacts-phone, 
+.footer__locations-boston, 
+.footer__locations-london {
+  color: #dbbaa2ff;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  padding-left: 40px;
+}
+
+.footer__content-img img {
+  margin-top: 30px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer__content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mail, 
+.phone, 
+.boston, 
+.london {
+  padding-left: 20px;
+}
+
+.footer__locations-title {
+  margin-bottom: 10px;
+}
