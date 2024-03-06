@@ -15,6 +15,9 @@ import collars_or_leashes from './img/icon/collars-or-leashes.svg'
 import sleeping_area from './img/icon/sleeping-area.svg'
 import donation_dog from './img/pets/donation-dog.png'
 import credit_card from './img/icon/credit-card.svg'
+import katrine from './img/pets/pets-katrine.png'
+import jennifer from './img/pets/pets-jennifer.png'
+import woody from './img/pets/pets-woody.png'
 
 function MainPage() {
     return (
@@ -69,25 +72,20 @@ function MainPage() {
                         <img src={arrow} alt="No image"/>
                       </button>
                     </div>
-                    <div className="carousel-slider" id="carousel-slider">
-                      <div className="carousel" id="carousel">
-                        <div className="slider-line" id="slider-left">
-                          <div className="slider__item">
-                            <p className="slider__item-title">Katrine</p>
-                            <button className="slider__button">Learn more</button>
-                          </div>
-                          <div className="slider__item">
-                            <p className="slider__item-title">Jennifer</p>
-                            <button className="slider__button">Learn more</button>
-                          </div>
-                          <div className="slider__item">
-                            <p className="slider__item-title">Woody</p>
-                            <button className="slider__button">Learn more</button>
-                          </div>
-                        </div>
-                        <div className="slider-line" id="slider-center"></div>
-                        <div className="slider-line" id="slider-right"></div>
-                      </div>
+                    <div className="slider__item">
+                      <img src={katrine} alt="No image"/>
+                      <p className="slider__item-title">Katrine</p>
+                      <button className="slider__button">Learn more</button>
+                    </div>
+                    <div className="slider__item" id="slider__item-delete-320">
+                      <img src={jennifer} alt="No image"/>
+                      <p className="slider__item-title">Jennifer</p>
+                      <button className="slider__button">Learn more</button>
+                    </div>
+                    <div className="slider__item" id="slider__item-delete">
+                      <img src={woody} alt="No image"/>
+                      <p className="slider__item-title">Woody</p>
+                      <button className="slider__button">Learn more</button>
                     </div>
                     <div className="slider__button-pag-1" id="button-right">
                       <button className="button-img">

@@ -20,7 +20,9 @@
 }
 
 .start-content {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
   width: 380px;
 }
 
@@ -67,6 +69,7 @@
 .about-content__heading {
   color: #545454ff;
   font-size: 48px;
+  padding-bottom: 20px;
 }
 
 .about-content__subheading-paragraph {
@@ -129,7 +132,10 @@
 
 .slider {
   display: flex;
+  justify-content: space-around;
   align-items: center;
+  text-align: center;
+  margin: 50px 0;
 }
 
 .slider-line {
@@ -142,10 +148,10 @@
 .slider__item img,
 .gallery__item img {
   width: 100%;
+  padding-bottom: 30px;
 }
 
-.slider__item,
-.gallery__item {
+.slider__item {
   height: 435px;
   width: 270px;
   background-color: #fafafaff;
@@ -153,26 +159,20 @@
   cursor: pointer;
 }
 
-.gallery__item {
-  margin-left: 0px;
-}
-
-.slider__item:hover,
-.gallery__item:hover {
+.slider__item:hover {
   border: 3px dashed #f2ceb3ff;
 }
 
-.slider__item-title,
-.gallery__item-title{
+.slider__item-title {
   background-color: #fafafaff;
   color: #545454ff;
   font-size: 20px;
   display: flex;
   justify-content: center;
+  padding-bottom: 20px;
 }
 
-.slider__button,
-.gallery__button {
+.slider__button {
   background-color: #fafafaff;
   border: 2px solid #f2ceb3ff;
   border-radius: 60px;
@@ -182,8 +182,7 @@
   margin-top: 10px;
 }
 
-.slider__button:hover,
-.gallery__button:hover {
+.slider__button:hover {
   background-color: #f2ceb3ff;
   border-radius: 60px;
   border: 2px solid #f2ceb3ff;
