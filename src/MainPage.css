@@ -1,6 +1,4 @@
-.start-screen {
-  background: url("img/noise_transparent@2x.png"), linear-gradient(90deg, rgba(65,58,25,1) 0%, rgba(79,63,51,1) 46%, rgba(3,1,27,1) 100%);
-}
+
 
 .not-only {
   display: flex;

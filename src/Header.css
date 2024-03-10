@@ -1,24 +1,46 @@
-.header {
+.header-main,
+.header-ourpets {
   display: flex;
   justify-content: space-between;
+}
+
+.header-ourpets {
+  background-color: white;
+  padding-left: 20px;
 }
 
 .logo {
   padding: 10px;
   padding-left: 25px;
   width: 400px;
+  text-decoration: none;
 }
 
-.logo__heading {
+.header-logo__heading {
+  color: black;
+  font-size: 32px;
+  margin: 2px;
+  text-decoration: none;
+}
+
+.header-logo__subheading {
+  margin-left: 20px;
+  margin-top: 0px;
+  color: black;
+  font-size: 13px;
+}
+
+.logo__heading-main {
   color: #f2ceb3ff;
-  font-size: 44px;
+  font-size: 32px;
   margin: 2px;
 }
 
-.logo__subheading {
+.logo__subheading-main {
   margin-left: 20px;
   margin-top: 0px;
   color: #e8e7e6ff;
+  font-size: 13px;
 }
 
 .wrapper-menu {
@@ -27,7 +49,8 @@
   padding-right: 25px;
 }
 
-.menu {
+.menu-main,
+.menu-ourpets {
   width: 100%;
   font-size: 20px;
   display: flex;
@@ -39,12 +62,19 @@
   padding-right: 20px;
 }
 
-.menu a{
+.menu-main a{
   color: #e8e7e6ff;
   text-decoration: none;
   margin-left: 15px;
 }
 
-.menu a:hover {
+.menu-ourpets a{
+  color: black;
+  text-decoration: none;
+  margin-left: 15px;
+}
+
+.menu-main a:hover,
+.menu-ourpets a:hover {
   border-bottom: 3px solid #f2ceb3ff;
 }

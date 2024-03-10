@@ -22,7 +22,7 @@ import woody from './img/pets/pets-woody.png'
 function MainPage() {
     return (
       <>
-        <section className="start-screen">
+        <section className="start-screen-main">
           <div className="container">
             <div className="start-screen__content">
               <section className="not-only">

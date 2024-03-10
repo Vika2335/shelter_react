@@ -1,35 +1,38 @@
 import React from 'react'
 import './Header.css'
-import { Link } from 'react-router-dom'
+import { Link, useLocation, Outlet } from 'react-router-dom'
 
 function Header() {
-    return (
-      <>
-        <section className='start-screen'>
-          <div className='container'>
-            <header className="header">
-              <div className="logo">
-                <p className="logo__heading">Cozy House</p>
-                <div className="logo__subheading">Shelter for pets in Boston</div>
-              </div>
-              <div className="menu__button">
-                <span></span>
-              </div>
-              <div className="wrapper-menu">
-                <nav className="menu">
-                  <ul className="menu-list">
-                    <li><Link to="/">About the shelter</Link></li>
-                    <li><Link to="/OurPets.jsx">Our pets</Link></li>
-                    <li><a href="#help">Help the shelter</a></li>
-                    <li><a href="#footer">Contacts</a></li>
-                  </ul>
-                </nav>
-              </div>
-            </header>
-          </div>
-        </section>
-      </>
-    )
-  }
+  const location = useLocation();
+
+  return (
+    <>
+      <section className={ `start-screen ${ location.pathname === '/' ? 'start-screen-main' : 'start-screen-ourpets' }` }>
+        <div className='container'>
+          <header className={ `header ${ location.pathname === '/' ? 'header-main' : 'header-ourpets' }` }>
+            <Link className="logo" to="/">
+              <p className={ `logo__heading ${ location.pathname === '/' ? 'logo__heading-main' : 'header-logo__heading' }` }>Cozy House</p>
+              <div className={ `logo__heading ${ location.pathname === '/' ? 'logo__subheading-main' : 'header-logo__subheading' }` }>Shelter for pets in Boston</div>
+            </Link>
+            <div className="menu__button">
+              <span></span>
+            </div>
+            <div className="wrapper-menu">
+              <nav className={ `menu ${ location.pathname === '/' ? 'menu-main' : 'menu-ourpets' }` }>
+                <ul className="menu-list">
+                  <li><Link to="/">About the shelter</Link></li>
+                  <li><Link to="/ourpets">Our pets</Link></li>
+                  <li><a href="#help">Help the shelter</a></li>
+                  <li><a href="#footer">Contacts</a></li>
+                </ul>
+              </nav>
+            </div>
+            <Outlet />
+          </header>
+        </div>
+      </section>
+    </>
+  )
+}  
   
-  export default Header
+export default Header

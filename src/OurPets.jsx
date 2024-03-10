@@ -62,10 +62,10 @@ function OurPets() {
                   </div>
                   <div className="nav">
                     <div className="pagination">
-                      <button className="pagination__button-img" disabled="true" id="firstback">
+                      <button className="pagination__button-img" /*disabled="true"*/ id="firstback">
                         &lt;&lt;
                       </button>
-                      <button className="pagination__button-img" id="back" disabled="true">
+                      <button className="pagination__button-img" id="back" /*disabled="true"*/>
                         &lt;
                       </button>
                       <button className="pagination__button-img pagination__button" id="page">1</button>
