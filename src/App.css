@@ -351,18 +351,22 @@
     position: fixed;
     inset: 0;
     z-index: -1;
-    width: 100vw;
-    height: 100vh;
     background: transparent;
     transition: left 0.3s ease 0s;
     display: none;
   }
   
   .wrapper-menu.active {
-    display: flex;
-    justify-content: end;
+    position: fixed;
+    top: 0;
+    left: 0;
     z-index: 1;
     background: rgba(16, 16, 16, 0.6);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
   }
   
   .header-main, 

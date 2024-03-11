@@ -1,9 +1,16 @@
-import React from 'react'
+import React, {useState} from 'react'
 import './Header.css'
 import { Link, useLocation, Outlet } from 'react-router-dom'
 
 function Header() {
   const location = useLocation();
+
+  const [menuActive, setIsMenuActive] = useState(false);
+
+  const handleMenuClick = () => {
+    setIsMenuActive(!menuActive);
+    document.body.classList.toggle('lock');
+  };
 
   return (
     <>
@@ -14,10 +21,10 @@ function Header() {
               <p className={ `logo__heading ${ location.pathname === '/' ? 'logo__heading-main' : 'header-logo__heading' }` }>Cozy House</p>
               <div className={ `logo__heading ${ location.pathname === '/' ? 'logo__subheading-main' : 'header-logo__subheading' }` }>Shelter for pets in Boston</div>
             </Link>
-            <div className="menu__button">
+            <div className="menu__button" onClick={handleMenuClick}>
               <span></span>
             </div>
-            <div className="wrapper-menu">
+            <div className={`wrapper-menu ${menuActive ? 'active' : ''}`}>
               <nav className={ `menu ${ location.pathname === '/' ? 'menu-main' : 'menu-ourpets' }` }>
                 <ul className="menu-list">
                   <li><Link to="/">About the shelter</Link></li>
