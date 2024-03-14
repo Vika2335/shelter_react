@@ -58,7 +58,7 @@ function AddCard({ isOpen, onClose, onSave }) {
                 </div>
                 
                 <div className='modal__button'>
-                  <button className='save' onClick={handleSave}>Save</button>
+                  <div className='modal__button-save'><button className='save' onClick={handleSave}>Save</button></div>
                   <button className='cancel' onClick={onClose}>Cancel</button>
                 </div>
               </div>

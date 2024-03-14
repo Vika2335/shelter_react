@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Card from './Card';
 import AddCard from './AddCard.jsx';
+import Popup from './Popup.jsx';
 import './Catalog.css';
 import katrine from './img/pets/pets-katrine.png';
 import jennifer from './img/pets/pets-jennifer.png';
@@ -16,7 +17,8 @@ function generateUniqueId() {
 }
 
 function Catalog() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedPet, setSelectedPet] = useState(null);
 
   const [pets, setPets] = useState([
     { id: generateUniqueId(), imgSrc: katrine, name: 'Katrine' },
@@ -30,12 +32,13 @@ function Catalog() {
   ]);
 
   const openModal = () => {
-    setIsOpen(true);
+    setIsModalOpen(true);
     document.body.classList.toggle('lock');
   };
 
   const closeModal = () => {
-    setIsOpen(false);
+    setIsModalOpen(false);
+    document.body.classList.toggle('lock');
   };
 
   const addCard = (newCardData) => {
@@ -60,7 +63,7 @@ function Catalog() {
               <h1 className="pets-content__heading">Our friends who are looking for a house</h1>
               <div className="catalog">
                 {pets.map(pet => (
-                  <Card key={pet.id} id={pet.id} imgSrc={pet.imgSrc} name={pet.name} onDelete={() => deleteCard(pet.id)}/>
+                  <Card key={pet.id} id={pet.id} imgSrc={pet.imgSrc} name={pet.name} onDelete={() => deleteCard(pet.id)} setSelectedPet={setSelectedPet} />
                 ))}
               </div>
               <div className='addCard'>
@@ -70,7 +73,8 @@ function Catalog() {
           </div>
         </div>
       </section>
-      <AddCard isOpen={isOpen} onClose={closeModal} onSave={addCard} />
+      <Popup onClose={closeModal} selectedPet={selectedPet} />
+      <AddCard isOpen={isModalOpen} onClose={closeModal} onSave={addCard} />
     </main>
   );
 }
