@@ -29,6 +29,7 @@ function Header() {
                 <ul className="menu-list">
                   <li><Link to="/">About the shelter</Link></li>
                   <li><Link to="/ourpets">Our pets</Link></li>
+                  <li><Link to="/catalog">Catalog</Link></li>
                   <li><a href="#help">Help the shelter</a></li>
                   <li><a href="#footer">Contacts</a></li>
                 </ul>

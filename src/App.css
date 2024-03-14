@@ -25,14 +25,6 @@
 }
 
 @media (max-width: 1180px) {
-  .gallery {
-    display: grid;
-    grid-template-columns: 270px 270px 270px;
-    grid-template-rows: 450px 450px 450px;
-    gap: 25px;
-    justify-content: center;
-  }
-
   .credit-card__item-title {
     font-size: 18px;
   }
@@ -61,14 +53,6 @@
 }
 
 @media (max-width: 890px) {
-  .gallery {
-    display: grid;
-    grid-template-columns: 270px 270px;
-    grid-template-rows: 450px 450px 450px 450px;
-    gap: 25px;
-    justify-content: center;
-  }
-
   .menu-list {
     font-size: 18px;
   }

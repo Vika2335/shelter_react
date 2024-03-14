@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import './MainPage.css'
-import { data } from './scripts/data';
+import GalleryCard from './GalleryCard.jsx';
 import start_screen_puppy from './img/pets/start-screen-puppy.png'
 import about_pets from './img/pets/about-pets.png'
 import arrow from './img/pagination/Arrow.svg'
@@ -43,18 +43,17 @@ function shuffle(array) {
   return array;
 }
 
-function Card({ id, img, name }) {
-  return (
-    <div className="slider__item" id={id}>
-      <img src={img} alt="No image" />
-      <p className="slider__item-title">{name}</p>
-      <button className="slider__button">Learn more</button>
-    </div>
-  );
-}
-
 function MainPage() {
-  const pets = data; 
+  const pets = [
+    { imgSrc: katrine, name: 'Katrine' },
+    { imgSrc: jennifer, name: 'Jennifer' },
+    { imgSrc: woody, name: 'Woody' },
+    { imgSrc: sophie, name: 'Sophia' },
+    { imgSrc: timmy, name: 'Timmy' },
+    { imgSrc: charly, name: 'Charly' },
+    { imgSrc: scarlett, name: 'Scarlett' },
+    { imgSrc: freddie, name: 'Freddie' },
+  ]; 
   const shuffledPets = shuffle(pets);
 
   const [visibleCardsPets, setVisibleCardsPets] = useState(shuffledPets.slice(0, 3));
@@ -141,19 +140,19 @@ function MainPage() {
                   <div className="carousel-slider" id="carousel-slider">
                     <div className={`carousel ${isTransitionLeft ? "transition-left" : ""} ${isTransitionRight ? "transition-right" : ""}`} id="carousel">
                       <div className="slider-line" id="slider-left">
-                        {leftCardsPets.map((cardPets) => (
-                          <Card key={cardPets.id} {...cardPets} />
+                        {leftCardsPets.map((pet, index) => (
+                          <GalleryCard key={index} imgSrc={pet.imgSrc} name={pet.name} />
                         ))}
                       </div>
                       <div className="slider-line" id="slider-center">
-                        {visibleCardsPets.map((cardPets) => (
-                          <Card key={cardPets.id} {...cardPets} />
+                        {visibleCardsPets.map((pet, index) => (
+                          <GalleryCard key={index} imgSrc={pet.imgSrc} name={pet.name} />
                         ))}
                       </div>
                       <div className="slider-line" id="slider-right">
-                        {rightCardsPets.map((cardPets) => (
-                          <Card key={cardPets.id} {...cardPets} />
-                        ))}
+                        {rightCardsPets.map((pet, index) => (
+                          <GalleryCard key={index} imgSrc={pet.imgSrc} name={pet.name} />
+                        ))} 
                       </div>
                     </div>
                   </div>
@@ -164,7 +163,7 @@ function MainPage() {
                   </div>
                 </div>
                 <div className="pets-content-link">
-                  <a href="/our_pets.html"><button className="link__button">Get to know the rest</button></a>
+                  <a href="/ourpets"><button className="link__button">Get to know the rest</button></a>
                 </div>
               </div>
             </div>
