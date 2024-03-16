@@ -1,14 +1,13 @@
 import React from 'react';
 
-function Card({ id, imgSrc, name, onDelete,  setSelectedPet, openModal }) {
+function Card({ id, imgSrc, name, onDelete,  setSelectedPet }) {
   const handleDelete = () => {
     onDelete(id);
   };
 
   const handleLearnMore = () => {
     setSelectedPet({ id, imgSrc, name });
-    openModal();
-  };
+  };  
 
   return (
     <div className="gallery__item-card" id={id}>

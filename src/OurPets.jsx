@@ -220,7 +220,7 @@ function OurPets() {
                 <h1 className="pets-content__heading">Our friends who are looking for a house</h1>
                 <div className="gallery">
                   {petsGallery.map((pet, index) => (
-                    <GalleryCard key={index} imgSrc={pet.img} name={pet.name} />
+                    <GalleryCard key={index} imgSrc={pet.img} name={pet.name}/>
                   ))}
                 </div>
                 <div className="nav">

@@ -21,14 +21,14 @@ function Catalog() {
   const [selectedPet, setSelectedPet] = useState(null);
 
   const [pets, setPets] = useState([
-    { id: generateUniqueId(), imgSrc: katrine, name: 'Katrine' },
-    { id: generateUniqueId(), imgSrc: jennifer, name: 'Jennifer' },
-    { id: generateUniqueId(), imgSrc: woody, name: 'Woody' },
-    { id: generateUniqueId(), imgSrc: sophie, name: 'Sophia' },
-    { id: generateUniqueId(), imgSrc: timmy, name: 'Timmy' },
-    { id: generateUniqueId(), imgSrc: charly, name: 'Charly' },
-    { id: generateUniqueId(), imgSrc: scarlett, name: 'Scarlett' },
-    { id: generateUniqueId(), imgSrc: freddie, name: 'Freddie' },
+    { id: '5', imgSrc: katrine, name: 'Katrine' },
+    { id: '1', imgSrc: jennifer, name: 'Jennifer' },
+    { id: '3', imgSrc: woody, name: 'Woody' },
+    { id: '2', imgSrc: sophie, name: 'Sophia' },
+    { id: '6', imgSrc: timmy, name: 'Timmy' },
+    { id: '8', imgSrc: charly, name: 'Charly' },
+    { id: '4', imgSrc: scarlett, name: 'Scarlett' },
+    { id: '7', imgSrc: freddie, name: 'Freddie' },
   ]);
 
   const openModal = () => {
@@ -63,7 +63,7 @@ function Catalog() {
               <h1 className="pets-content__heading">Our friends who are looking for a house</h1>
               <div className="catalog">
                 {pets.map(pet => (
-                  <Card key={pet.id} id={pet.id} imgSrc={pet.imgSrc} name={pet.name} onDelete={() => deleteCard(pet.id)} setSelectedPet={setSelectedPet} />
+                  <Card key={pet.id} id={pet.id} imgSrc={pet.imgSrc} name={pet.name} onDelete={() => deleteCard(pet.id)} setSelectedPet={setSelectedPet}/>
                 ))}
               </div>
               <div className='addCard'>
@@ -73,7 +73,7 @@ function Catalog() {
           </div>
         </div>
       </section>
-      <Popup onClose={closeModal} selectedPet={selectedPet} />
+      <Popup onClose={closeModal} selectedPet={selectedPet}/>
       <AddCard isOpen={isModalOpen} onClose={closeModal} onSave={addCard} />
     </main>
   );
