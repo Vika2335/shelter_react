@@ -3,6 +3,7 @@ import Card from './Card';
 import AddCard from './AddCard.jsx';
 import Popup from './Popup.jsx';
 import './Catalog.css';
+import { data } from './scripts/data.js'
 import katrine from './img/pets/pets-katrine.png';
 import jennifer from './img/pets/pets-jennifer.png';
 import woody from './img/pets/pets-woody.png';
@@ -46,6 +47,7 @@ function Catalog() {
       id: generateUniqueId(),
       ...newCardData
     };
+    data.push(newCard);
     setPets([...pets, newCard]);
     closeModal();
   };
