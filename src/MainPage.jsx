@@ -69,21 +69,25 @@ function MainPage() {
   
     const newVisible = leftCardsPets.slice(0, 3);
     const newLeft = leftCardsPets.slice(3).concat(visibleCardsPets.slice(0, 1));
+    const newRight = visibleCardsPets.slice(1).concat(rightCardsPets.slice(-1));
   
     setVisibleCardsPets(newVisible);
     setLeftCardsPets(newLeft);
+    setRightCardsPets(newRight);
   }
-
+  
   function moveRight() {
     setIsTransitionRight(true);
     setIsTransitionLeft(false);
-
+  
     const newVisible = rightCardsPets.slice(-3);
     const newRight = rightCardsPets.slice(0, -3).concat(visibleCardsPets.slice(-1));
-
+    const newLeft = visibleCardsPets.slice(0, -1).concat(leftCardsPets.slice(0, 1));
+  
     setVisibleCardsPets(newVisible);
     setRightCardsPets(newRight);
-  }
+    setLeftCardsPets(newLeft);
+  }  
 
   return (
     <>
