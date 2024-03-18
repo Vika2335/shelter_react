@@ -1,9 +1,9 @@
 import React from 'react'
 import './Footer.css'
-import mail from './img/icon/mail.svg'
-import phone from './img/icon/phone.svg'
-import pin from './img/icon/pin.svg'
-import footer_puppy from './img/pets/footer-puppy.png'
+import mail from './assets/img/icon/mail.svg'
+import phone from './assets/img/icon/phone.svg'
+import pin from './assets/img/icon/pin.svg'
+import footer_puppy from './assets/img/pets/footer-puppy.png'
 
 function Footer() {
     return (

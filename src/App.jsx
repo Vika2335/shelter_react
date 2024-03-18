@@ -1,11 +1,10 @@
 import { Routes, Route } from 'react-router-dom'
-import Header from './Header.jsx'
-import MainPage from './MainPage.jsx'
-import OurPets from './OurPets.jsx'
+import Header from './components/Header/Header.jsx'
+import MainPage from './page/MainPage/MainPage.jsx'
+import OurPets from './page/OurPets/OurPets.jsx'
 import './App.css'
-import Footer from './Footer.jsx'
-import Catalog from './Catalog.jsx'
-import Card from './Card.jsx'
+import Footer from './components/Footer/Footer.jsx'
+import Catalog from './page/Catalog/Catalog.jsx'
 
 function App() {
   return (

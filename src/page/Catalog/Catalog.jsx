@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
-import Card from './Card';
-import AddCard from './AddCard.jsx';
-import Popup from './Popup.jsx';
+import Card from '../../components/Card/Card.jsx';
+import AddCard from '../../components/AddCard/AddCard.jsx';
+import Popup from '../../components/Popup/Popup.jsx';
 import './Catalog.css';
-import { data } from './scripts/data.js'
-import katrine from './img/pets/pets-katrine.png';
-import jennifer from './img/pets/pets-jennifer.png';
-import woody from './img/pets/pets-woody.png';
-import sophie from './img/pets/pets-sophia.png';
-import timmy from './img/pets/pets-timmy.png';
-import charly from './img/pets/pets-charly.png';
-import scarlett from './img/pets/pets-scarlet.png';
-import freddie from './img/pets/pets-freddie.png';
+import { data } from '../../utils/data.js'
+import katrine from './assets/img/pets/pets-katrine.png';
+import jennifer from './assets/img/pets/pets-jennifer.png';
+import woody from './assets/img/pets/pets-woody.png';
+import sophie from './assets/img/pets/pets-sophia.png';
+import timmy from './assets/img/pets/pets-timmy.png';
+import charly from './assets/img/pets/pets-charly.png';
+import scarlett from './assets/img/pets/pets-scarlet.png';
+import freddie from './assets/img/pets/pets-freddie.png';
 
 function generateUniqueId() {
   return Math.random().toString();

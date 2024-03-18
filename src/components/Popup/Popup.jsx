@@ -1,7 +1,7 @@
 import React from 'react';
 import './Popup.css';
-import vector from './img/pagination/Vector (1).svg';
-import { data } from './scripts/data.js';
+import vector from './assets/img/pagination/Vector (1).svg';
+import { data } from '../../utils/data.js';
 
 export function Popup({ onClose, selectedPet }) {
   if (!selectedPet) return null;

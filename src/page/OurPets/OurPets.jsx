@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react'
-import { data } from './scripts/data';
+import { data } from '../../utils/data.js';
 import './OurPets.css'
-import GalleryCard from './GalleryCard.jsx'
-import katrine from './img/pets/pets-katrine.png'
-import jennifer from './img/pets/pets-jennifer.png'
-import woody from './img/pets/pets-woody.png'
-import sophie from './img/pets/pets-sophia.png'
-import timmy from './img/pets/pets-timmy.png'
-import charly from './img/pets/pets-charly.png'
-import scarlett from './img/pets/pets-scarlet.png'
-import freddie from './img/pets/pets-freddie.png'
+import GalleryCard from './components/Card/GalleryCard.jsx'
+import katrine from './assets/img/pets/pets-katrine.png'
+import jennifer from './assets/img/pets/pets-jennifer.png'
+import woody from './assets/img/pets/pets-woody.png'
+import sophie from './assets/img/pets/pets-sophia.png'
+import timmy from './assets/img/pets/pets-timmy.png'
+import charly from './assets/img/pets/pets-charly.png'
+import scarlett from './assets/img/pets/pets-scarlet.png'
+import freddie from './assets/img/pets/pets-freddie.png'
 
 function shuffle(array) {
   let currentIndex = array.length,  randomIndex;

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 function GalleryCard({ id, imgSrc, name, setSelectedPet}) {
   const handleLearnMore = () => {
