@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import './MainPage.css'
 import GalleryCard from './GalleryCard.jsx';
+import Popup from './Popup.jsx';
 import start_screen_puppy from './img/pets/start-screen-puppy.png'
 import about_pets from './img/pets/about-pets.png'
 import arrow from './img/pagination/Arrow.svg'
@@ -63,6 +64,8 @@ function MainPage() {
   const [isTransitionLeft, setIsTransitionLeft] = useState(false);
   const [isTransitionRight, setIsTransitionRight] = useState(false);
 
+  const [selectedPet, setSelectedPet] = useState(null);
+
   function moveLeft() {
     setIsTransitionLeft(true);
     setIsTransitionRight(false);
@@ -88,6 +91,13 @@ function MainPage() {
     setRightCardsPets(newRight);
     setLeftCardsPets(newLeft);
   }  
+  const openPopup = (pet) => {
+    setSelectedPet(pet);
+  };
+
+  const closePopup = () => {
+    setSelectedPet(null);
+  };
 
   return (
     <>
@@ -145,17 +155,17 @@ function MainPage() {
                     <div className={`carousel ${isTransitionLeft ? "transition-left" : ""} ${isTransitionRight ? "transition-right" : ""}`} id="carousel">
                       <div className="slider-line" id="slider-left">
                         {leftCardsPets.map((pet, index) => (
-                          <GalleryCard key={index} imgSrc={pet.imgSrc} name={pet.name} />
+                          <GalleryCard key={index} id={pet.id} imgSrc={pet.imgSrc} name={pet.name} setSelectedPet={openPopup}/>
                         ))}
                       </div>
                       <div className="slider-line" id="slider-center">
                         {visibleCardsPets.map((pet, index) => (
-                          <GalleryCard key={index} imgSrc={pet.imgSrc} name={pet.name} />
+                          <GalleryCard key={index} id={pet.id} imgSrc={pet.imgSrc} name={pet.name} setSelectedPet={openPopup}/>
                         ))}
                       </div>
                       <div className="slider-line" id="slider-right">
                         {rightCardsPets.map((pet, index) => (
-                          <GalleryCard key={index} imgSrc={pet.imgSrc} name={pet.name} />
+                          <GalleryCard key={index} id={pet.id} imgSrc={pet.imgSrc} name={pet.name} setSelectedPet={openPopup}/>
                         ))} 
                       </div>
                     </div>
@@ -238,6 +248,7 @@ function MainPage() {
             </div>
           </div>
         </section>
+        <Popup onClose={closePopup} selectedPet={selectedPet} />
       </main>
     </>
   )
