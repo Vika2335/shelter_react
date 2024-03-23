@@ -42,6 +42,10 @@ function Catalog() {
     document.body.classList.toggle('lock');
   };
 
+  const closePopup = () => {
+    setSelectedPet(null);
+  };
+
   const addCard = (newCardData) => {
     const newCard = {
       id: generateUniqueId(),
@@ -75,7 +79,7 @@ function Catalog() {
           </div>
         </div>
       </section>
-      <Popup onClose={closeModal} selectedPet={selectedPet}/>
+      <Popup onClose={closePopup} selectedPet={selectedPet}/>
       <AddCard isOpen={isModalOpen} onClose={closeModal} onSave={addCard} />
     </main>
   );

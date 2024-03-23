@@ -17,14 +17,7 @@ import collars_or_leashes from '../../images/icon/collars-or-leashes.svg'
 import sleeping_area from '../../images/icon/sleeping-area.svg'
 import donation_dog from '../../images/pets/donation-dog.png'
 import credit_card from '../../images/icon/credit-card.svg'
-import katrine from '../../images/pets/pets-katrine.png'
-import jennifer from '../../images/pets/pets-jennifer.png'
-import woody from '../../images/pets/pets-woody.png'
-import sophie from '../../images/pets/pets-sophia.png'
-import timmy from '../../images/pets/pets-timmy.png'
-import charly from '../../images/pets/pets-charly.png'
-import scarlett from '../../images/pets/pets-scarlet.png'
-import freddie from '../../images/pets/pets-freddie.png'
+import { data } from '../../utils/data.js';
 
 function shuffle(array) {
   let currentIndex = array.length,  randomIndex;
@@ -45,16 +38,7 @@ function shuffle(array) {
 }
 
 function MainPage() {
-  const pets = [
-    { imgSrc: katrine, name: 'Katrine' },
-    { imgSrc: jennifer, name: 'Jennifer' },
-    { imgSrc: woody, name: 'Woody' },
-    { imgSrc: sophie, name: 'Sophia' },
-    { imgSrc: timmy, name: 'Timmy' },
-    { imgSrc: charly, name: 'Charly' },
-    { imgSrc: scarlett, name: 'Scarlett' },
-    { imgSrc: freddie, name: 'Freddie' },
-  ]; 
+  const pets = data
   const shuffledPets = shuffle(pets);
 
   const [visibleCardsPets, setVisibleCardsPets] = useState(shuffledPets.slice(0, 3));
@@ -91,6 +75,7 @@ function MainPage() {
     setRightCardsPets(newRight);
     setLeftCardsPets(newLeft);
   }  
+
   const openPopup = (pet) => {
     setSelectedPet(pet);
   };
@@ -155,17 +140,17 @@ function MainPage() {
                     <div className={`carousel ${isTransitionLeft ? "transition-left" : ""} ${isTransitionRight ? "transition-right" : ""}`} id="carousel">
                       <div className="slider-line" id="slider-left">
                         {leftCardsPets.map((pet, index) => (
-                          <GalleryCard key={index} id={pet.id} imgSrc={pet.imgSrc} name={pet.name} setSelectedPet={openPopup}/>
+                          <GalleryCard key={index} id={pet.id} imgSrc={pet.img} name={pet.name} setSelectedPet={openPopup}/>
                         ))}
                       </div>
                       <div className="slider-line" id="slider-center">
                         {visibleCardsPets.map((pet, index) => (
-                          <GalleryCard key={index} id={pet.id} imgSrc={pet.imgSrc} name={pet.name} setSelectedPet={openPopup}/>
+                          <GalleryCard key={index} id={pet.id} imgSrc={pet.img} name={pet.name} setSelectedPet={openPopup}/>
                         ))}
                       </div>
                       <div className="slider-line" id="slider-right">
                         {rightCardsPets.map((pet, index) => (
-                          <GalleryCard key={index} id={pet.id} imgSrc={pet.imgSrc} name={pet.name} setSelectedPet={openPopup}/>
+                          <GalleryCard key={index} id={pet.id} imgSrc={pet.img} name={pet.name} setSelectedPet={openPopup}/>
                         ))} 
                       </div>
                     </div>

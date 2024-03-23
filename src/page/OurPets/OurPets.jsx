@@ -1,15 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import { data } from '../../utils/data.js';
 import './OurPets.css'
+import Popup from '../../components/Popup/Popup.jsx'; 
 import GalleryCard from '../../components/Card/GalleryCard.jsx'
-import katrine from '../../images/pets/pets-katrine.png'
-import jennifer from '../../images/pets/pets-jennifer.png'
-import woody from '../../images/pets/pets-woody.png'
-import sophie from '../../images/pets/pets-sophia.png'
-import timmy from '../../images/pets/pets-timmy.png'
-import charly from '../../images/pets/pets-charly.png'
-import scarlett from '../../images/pets/pets-scarlet.png'
-import freddie from '../../images/pets/pets-freddie.png'
+import { data } from '../../utils/data.js';
 
 function shuffle(array) {
   let currentIndex = array.length,  randomIndex;
@@ -29,7 +22,7 @@ function shuffle(array) {
   return array;
 }
 
-function adaptiv() {
+/*function adaptiv() {
   const windowInnerWidth = window.innerWidth;
   let countPage = 0;
 
@@ -46,169 +39,89 @@ function adaptiv() {
   }
 
   return countPage;
-}
+}*/ 
 
 function OurPets() {
-  function generateUniqueId() {
-    return Math.random().toString();
-  }
-
-  const petsGallery = [
-    { id: generateUniqueId(), imgSrc: katrine, name: 'Katrine' },
-    { id: generateUniqueId(), imgSrc: jennifer, name: 'Jennifer' },
-    { id: generateUniqueId(), imgSrc: woody, name: 'Woody' },
-    { id: generateUniqueId(), imgSrc: sophie, name: 'Sophia' },
-    { id: generateUniqueId(), imgSrc: timmy, name: 'Timmy' },
-    { id: generateUniqueId(), imgSrc: charly, name: 'Charly' },
-    { id: generateUniqueId(), imgSrc: scarlett, name: 'Scarlett' },
-    { id: generateUniqueId(), imgSrc: freddie, name: 'Freddie' },
-  ];
-
   const [currentPage, setCurrentPage] = useState(1);
-  const [maxPages, setMaxPages] = useState(adaptiv());
+  const [maxPages, setMaxPages] = useState(6);
+  const [pets, setPets] = useState([]);
+  const [selectedPet, setSelectedPet] = useState(null);
 
   useEffect(() => {
-    displayPage(currentPage);
+    const page1 = data;
+    const page2 = shuffle([...data]);
+    const page3 = shuffle([...data]);
+    const page4 = shuffle([...data]);
+    const page5 = shuffle([...data]);
+    const page6 = shuffle([...data]);
+
+    const pages = [page1, page2, page3, page4, page5, page6];
+
+    setPets(pages[currentPage - 1]);
   }, [currentPage]);
 
   useEffect(() => {
-    const handleResize = () => {
-      setMaxPages(adaptiv());
-    };
-    window.addEventListener('resize', handleResize);
+    updatePaginationButtons();
+  }, [currentPage, maxPages]);
+
+  useEffect(() => {
+    const forwardBtn = document.querySelector('#forward');
+    const backBtn = document.querySelector('#back');
+
+    forwardBtn.addEventListener('click', nextPage);
+    backBtn.addEventListener('click', previousPage);
 
     return () => {
-      window.removeEventListener('resize', handleResize);
+      forwardBtn.removeEventListener('click', nextPage);
+      backBtn.removeEventListener('click', previousPage);
     };
   }, []);
 
-  function displayPage(page) {
-    const pagePets = shuffle(petsGallery);
-
-    const gallery = document.querySelector('.gallery');
-    gallery.innerHTML = '';
-
-    pagePets.forEach((pet, index) => {
-      if (index >= (page - 1) * maxPages && index < page * maxPages) {
-        const item = document.createElement('div');
-        item.classList.add('gallery__item');
-        item.id = pet.id;
-        item.innerHTML = `
-          <img src="${pet.imgSrc}" alt="No image">
-          <p class="gallery__item-title">${pet.name}</p>
-          <button class="gallery__button">Learn more</button>
-        `;
-        gallery.appendChild(item);
-      }
-    });
-
+  useEffect(() => {
     updatePaginationButtons();
-    disabledBtn();
-
-    const galleryItems = document.querySelectorAll('.gallery__item');
-    galleryItems.forEach(galleryItem => generatePopupGallery(galleryItem));
-  }
+  }, [currentPage, maxPages]);
 
   function updatePaginationButtons() {
     const firstbackBtn = document.querySelector('#firstback');
     const lastforwardBtn = document.querySelector('#lastforward');
-    const forwardBtn = document.querySelector('#forward');
-    const backBtn = document.querySelector('#back');
 
-    firstbackBtn.addEventListener('click', firstPage);
-    lastforwardBtn.addEventListener('click', lastPage);
-    forwardBtn.addEventListener('click', nextPage);
-    backBtn.addEventListener('click', previousPage);
+    if (firstbackBtn && lastforwardBtn) {
+      if (currentPage > 1) {
+        firstbackBtn.removeAttribute('disabled');
+      } else {
+        firstbackBtn.setAttribute('disabled', 'true');
+      }
+
+      if (currentPage === maxPages) {
+        lastforwardBtn.setAttribute('disabled', 'true');
+      } else {
+        lastforwardBtn.removeAttribute('disabled');
+      }
+    }
 
     const centralBtn = document.querySelector('#page');
     centralBtn.innerHTML = currentPage;
   }
 
-  function disabledBtn() {
-    const firstbackBtn = document.querySelector('#firstback');
-    const lastforwardBtn = document.querySelector('#lastforward');
-    const forwardBtn = document.querySelector('#forward');
-    const backBtn = document.querySelector('#back');
-
-    if (currentPage > 1) {
-      backBtn.removeAttribute('disabled');
-      firstbackBtn.removeAttribute('disabled');
-    }
-
-    if (currentPage === 1) {
-      backBtn.setAttribute('disabled', 'true');
-      firstbackBtn.setAttribute('disabled', 'true');
-    }
-
-    if (currentPage === maxPages) {
-      forwardBtn.setAttribute('disabled', 'true');
-      lastforwardBtn.setAttribute('disabled', 'true');
-    }
-
-    if (currentPage < maxPages) {
-      forwardBtn.removeAttribute('disabled');
-      lastforwardBtn.removeAttribute('disabled');
-    }
-  }
-
-  function firstPage() {
-    setCurrentPage(1);
-  }
-
-  function lastPage() {
-    setCurrentPage(maxPages);
-  }
-
   function nextPage() { 
     if (currentPage < maxPages) {
-      setCurrentPage(currentPage + 1);
+      setCurrentPage(page => page + 1);
     }
   }
-
+  
   function previousPage() {
     if (currentPage > 1) {
-      setCurrentPage(currentPage - 1);
+      setCurrentPage(page => page - 1);
     }
   }
 
-  function generatePopupGallery(galleryItem) {
-    const onClickHandler = () => {
-      const popup = document.querySelector('.popup');
-
-      let pets = {};
-      pets = data.find(gallery => gallery.id === galleryItem.id);
-
-      popup.classList.toggle('active');
-      document.body.classList.toggle('lock');
-
-      dataModal(pets);
-
-      close();
-    };
-
-    return onClickHandler;
-  }
-
-  function dataModal(pets) {
-    document.querySelector('.content__heading').innerHTML = pets.name;
-    document.querySelector('.content__subheading').innerHTML = pets.type + ' - ' + pets.breed;
-    document.querySelector('.content__information').innerHTML = pets.description;
-    document.querySelector('.age').innerHTML = pets.age;
-    document.querySelector('.inoculations').innerHTML = pets.inoculations;
-    document.querySelector('.diseases').innerHTML = pets.diseases;
-    document.querySelector('.parasites').innerHTML = pets.parasites;
-    document.querySelector('.content__img img').setAttribute('src', pets.img);
-  }
-
-  function close() {
-    const onClickHandler = () => {
-      const popup = document.querySelector('.popup');
-      popup.classList.remove('active');
-      document.body.classList.remove('lock');
-    };
-
-    return onClickHandler;
-  }
+  const openPopup = (pet) => {
+    setSelectedPet(pet);
+  };
+  
+  const closePopup = () => {
+    setSelectedPet(null);
+  };
 
   return (
     <>
@@ -219,23 +132,23 @@ function OurPets() {
               <div className="pets-content">
                 <h1 className="pets-content__heading">Our friends who are looking for a house</h1>
                 <div className="gallery">
-                  {petsGallery.map((pet, index) => (
-                    <GalleryCard key={index} imgSrc={pet.img} name={pet.name}/>
+                  {pets.map((pet, index) => (
+                    <GalleryCard key={index} id={pet.id} imgSrc={pet.img} name={pet.name} setSelectedPet={openPopup}/>
                   ))}
                 </div>
                 <div className="nav">
                   <div className="pagination">
-                    <button className="pagination__button-img" id="firstback">
+                    <button className="pagination__button-img" id="firstback" onClick={() => setCurrentPage(1)}>
                       &lt;&lt;
                     </button>
-                    <button className="pagination__button-img" id="back">
+                    <button className="pagination__button-img" id="back" onClick={() => previousPage()}>
                       &lt;
                     </button>
-                    <button className="pagination__button-img pagination__button" id="page">1</button>
-                    <button className="pagination__button-img nav-img" id="forward">
+                    <button className="pagination__button-img pagination__button" id="page">{currentPage}</button>
+                    <button className="pagination__button-img nav-img" id="forward" onClick={() => nextPage()}>
                       &gt;
                     </button>
-                    <button className="pagination__button-img nav-img" id="lastforward">
+                    <button className="pagination__button-img nav-img" id="lastforward" onClick={() => setCurrentPage(6)}>
                       &gt;&gt;
                     </button>
                   </div>
@@ -244,6 +157,7 @@ function OurPets() {
             </div>
           </div>
         </section>
+        <Popup onClose={closePopup} selectedPet={selectedPet} />
       </main> 
     </>
   )

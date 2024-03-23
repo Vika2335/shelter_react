@@ -6,7 +6,9 @@ import { data } from '../../utils/data.js';
 export function Popup({ onClose, selectedPet }) {
   if (!selectedPet) return null;
 
-  const petData = data.find(pet => pet.id === selectedPet.id);
+  console.log('selectedPet :>> ', selectedPet);
+
+  const petData = data.find(pet => pet.id === selectedPet.id) || {};
 
   const closeModal = () => {
     onClose();
