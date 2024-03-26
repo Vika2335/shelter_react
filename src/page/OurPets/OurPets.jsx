@@ -84,18 +84,24 @@ function OurPets() {
   function updatePaginationButtons() {
     const firstbackBtn = document.querySelector('#firstback');
     const lastforwardBtn = document.querySelector('#lastforward');
+    const forwardBtn = document.querySelector('#forward');
+    const backBtn = document.querySelector('#back');
 
     if (firstbackBtn && lastforwardBtn) {
       if (currentPage > 1) {
         firstbackBtn.removeAttribute('disabled');
+        backBtn.removeAttribute('disabled');
       } else {
         firstbackBtn.setAttribute('disabled', 'true');
+        backBtn.setAttribute('disabled', 'true');
       }
 
       if (currentPage === maxPages) {
         lastforwardBtn.setAttribute('disabled', 'true');
+        forwardBtn.setAttribute('disabled', 'true');
       } else {
         lastforwardBtn.removeAttribute('disabled');
+        forwardBtn.removeAttribute('disabled');
       }
     }
 
