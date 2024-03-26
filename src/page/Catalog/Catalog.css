@@ -57,6 +57,10 @@
   font-size: 18px;
 }
 
+.gallery__delete:hover {
+  padding: 20px 80px;
+}
+
 .catalog {
   display: grid;
   grid-template-columns: 270px 270px 270px 270px;
